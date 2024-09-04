@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUCKET: aws-site-react-temp
-      DIST: build
+      DIST: dist
       REGION: us-east-1
       DIST_ID: EEW6AUIHZUDGT
     steps:
@@ -28,6 +28,9 @@ jobs:
 
       - name: Build Static Website
         run: npm run build
+
+      - name: Verify Build Directory
+        run: ls -la
 
       - name: Copy files to the production website with the AWS CLI
         run: |
